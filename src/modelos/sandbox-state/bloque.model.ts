@@ -1,4 +1,4 @@
-import { Color } from './color.type'
+import type { Color } from './color.type'
 
 export interface Bloque {
     coordX : number,

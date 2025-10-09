@@ -1,5 +1,5 @@
-import { Dificultad } from "./dificultad.enum"
-import { LogroCondicion } from "./logro-condicion.type"
+import type { Dificultad } from "./dificultad.enum"
+import type { LogroCondicion } from "./logro-condicion.type"
 
 export interface Logro {
     idLogro : number,

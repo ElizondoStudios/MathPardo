@@ -1,5 +1,5 @@
-import { LogroCompletado } from "./logros/logro-completado.model"
-import { SandboxState } from "./sandbox-state/sandbox-state.model"
+import type { LogroCompletado } from "./logros/logro-completado.model"
+import type { SandboxState } from "./sandbox-state/sandbox-state.model"
 
 export interface UsuarioInfo {
     nombre : string,
