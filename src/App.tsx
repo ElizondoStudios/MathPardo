@@ -61,9 +61,16 @@ function App() {
     }
   }, [suma, matterWorld])
 
+  // util
+  const formatSuma= (num: number)=> {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     <div className="container-fluid d-flex align-items-center justify-content-center p-0">
-      <div id="sandbox"></div>
+      <div id="sandbox">
+        <div className="suma"> ={formatSuma(suma)}</div>
+      </div>
       <Sidebar></Sidebar>
       <Pardito></Pardito>
     </div>
