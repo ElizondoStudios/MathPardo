@@ -10,12 +10,18 @@ import Pardito from "./components/Pardito";
 
 import type { sizes } from "./models/bloque";
 import type Matter from "matter-js";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { sumar } from "./store/slices/sumaSlice";
 
 const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1];
 
 function App() {
+  // Redux
+  const suma= useSelector((state: any) => state.suma.value);
+  const dispatch = useDispatch();
+
   // State
-  const [suma, setSuma]= useState(2342)
   const [matterWorld, setMatterWorld]= useState<Matter.World>(null)
   const [canvasWidth, setCanvasWidth]= useState(0)
   const [canvasHeight, setCanvasHeight]= useState(0)
@@ -38,6 +44,7 @@ function App() {
       setCanvasWidth(width)
       setCanvasHeight(height)
     }
+    dispatch(sumar(1343));
   }, []);
 
   useEffect(() => {
