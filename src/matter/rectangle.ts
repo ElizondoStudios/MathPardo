@@ -8,7 +8,11 @@ export default class MatterRectangle {
     y: number,
     width: number,
     height: number,
-    options: Matter.IChamferableBodyDefinition = {},
+    options: Matter.IChamferableBodyDefinition = {
+      friction: 0.1,
+      frictionAir: 0.01,
+      restitution: 0.3
+    },
     World: Matter.World
   ) {
     this.body = Matter.Bodies.rectangle(x, y, width, height, options);

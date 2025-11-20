@@ -5,7 +5,7 @@ export default function sandbox(
   width: number,
   height: number
 ) {
-  const wallWidth = 30;
+  const wallWidth = 10;
 
   Matter.use("matter-wrap");
 
@@ -20,6 +20,10 @@ export default function sandbox(
   // Engine
   var engine = Engine.create(),
     world = engine.world;
+
+  engine.positionIterations = 10;
+  engine.velocityIterations = 10;
+  engine.constraintIterations = 4;
 
   // Renderer
   var render = Render.create({
@@ -48,7 +52,7 @@ export default function sandbox(
   Composite.add(world, [
     Bodies.rectangle(width / 2, height - wallWidth / 2, width, wallWidth, {
       isStatic: true,
-      render: { fillStyle: "#1e1e1e" },
+      render: { fillStyle: "#CAE6E9" },
     }),
   ]);
 
@@ -56,11 +60,11 @@ export default function sandbox(
   Composite.add(world, [
     Bodies.rectangle(wallWidth / 2, height / 2, wallWidth, height, {
       isStatic: true,
-      render: { fillStyle: "#1e1e1e" },
+      render: { fillStyle: "#CAE6E9" },
     }),
     Bodies.rectangle(width - wallWidth / 2, height / 2, wallWidth, height, {
       isStatic: true,
-      render: { fillStyle: "#1e1e1e" },
+      render: { fillStyle: "#CAE6E9" },
     }),
   ]);
 
