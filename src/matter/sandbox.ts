@@ -95,6 +95,25 @@ export default function sandbox(
   // Sincronizar el mouse con el render
   render.mouse = mouse;
 
+  // Soltar objeto si el mouse sale del canvas o si hay un mouseup global
+  render.canvas.addEventListener("mouseleave", () => {
+    // forzamos la liberación de cualquier cuerpo sujeto por la constraint
+    if (mouseConstraint && mouseConstraint.constraint) {
+      (mouseConstraint.constraint as any).bodyB = null;
+      (mouseConstraint.constraint as any).pointB = null;
+    }
+    // resetear estado interno del mouse (uso de any para evitar errores de typings)
+    (mouse as any).button = -1;
+  });
+
+  // también aseguramos soltar al recibir mouseup fuera del canvas
+  window.addEventListener("mouseup", () => {
+    if (mouseConstraint && mouseConstraint.constraint) {
+      (mouseConstraint.constraint as any).bodyB = null;
+      (mouseConstraint.constraint as any).pointB = null;
+    }
+  });
+
   // Acomodar el viewport
   Render.lookAt(render, {
     min: { x: 0, y: 0 },
