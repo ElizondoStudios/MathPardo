@@ -13,6 +13,7 @@
   -moz-osx-font-smoothing: grayscale;
 
   --primary-color: #CAE6E9;
+  --border-radius: 12px;
 }
 
 a {
