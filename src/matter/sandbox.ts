@@ -38,7 +38,7 @@ export default function sandbox(
       height: height,
       showAngleIndicator: false,
       wireframes: false,
-      background: "#fff",
+      background: "transparent",
     },
   });
 
