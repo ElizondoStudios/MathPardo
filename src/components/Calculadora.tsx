@@ -2,37 +2,65 @@ import React from 'react'
 import './Calculadora.css'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { sumar } from '../store/slices/sumaSlice';
+import { setSuma } from '../store/slices/sumaSlice';
+
+const operadores= '+-*/=';
+const numeros= '0123456789';
 
 export default function Calculadora() {
   // Redux
   const suma= useSelector((state: any) => state.suma.value);
   const dispatch = useDispatch();
-  // State
-  const [valor, setValor]= React.useState(`${suma}`);
   
+  // State
+  const [expresion, setExpresion]= React.useState("");
+
+  // Effects
+  React.useEffect(() => {
+    setExpresion(`${suma}`);
+  }, [suma]);
+  
+  // Util
+  const sePuedeInsertarOperador= () => {
+    return !operadores.includes(expresion.at(-1));
+  }
+
+  const calcularResultado= () => {
+    try {
+      // Usar eval es peligroso, pero para este caso de uso simple y controlado está bien
+      if(operadores.includes(expresion.at(-1))) return; // Evitar evaluar si termina en operador
+      if(expresion.length === 0) return;
+
+      const resultado = eval(expresion);
+      dispatch(setSuma(resultado));
+    } catch (error) {
+      console.error("Error al calcular el resultado:", error);
+      setExpresion("Error");
+    }
+  }
+
   return (
     <div className='calculadora'>
       <div className="pantalla">
-        {valor}
+        {expresion}
       </div>
-      <div className="boton" id="clear">C</div>
-      <div className="boton" id="backspace">←</div>
-      <div className="boton" id="1">1</div>
-      <div className="boton" id="2">2</div>
-      <div className="boton" id="3">3</div>
-      <div className="boton" id="plus">+</div>
-      <div className="boton" id="4">4</div>
-      <div className="boton" id="5">5</div>
-      <div className="boton" id="6">6</div>
-      <div className="boton" id="minus">-</div>
-      <div className="boton" id="7">7</div>
-      <div className="boton" id="8">8</div>
-      <div className="boton" id="9">9</div>
-      <div className="boton" id="multiply">x</div>
-      <div className="boton" id="0">0</div>
-      <div className="boton" id="equals">=</div>
-      <div className="boton" id="divide">÷</div>
+      <div className="boton" onClick={() => setExpresion(`${suma}`)} id="clear">C</div>
+      <div className="boton" onClick={() => setExpresion(expresion.slice(0, -1))} id="backspace">←</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}1`)} id="1">1</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}2`)} id="2">2</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}3`)} id="3">3</div>
+      <div className="boton" onClick={() => sePuedeInsertarOperador() && setExpresion(`${expresion}+`)} id="plus">+</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}4`)} id="4">4</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}5`)} id="5">5</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}6`)} id="6">6</div>
+      <div className="boton" onClick={() => sePuedeInsertarOperador() && setExpresion(`${expresion}-`)} id="minus">-</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}7`)} id="7">7</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}8`)} id="8">8</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}9`)} id="9">9</div>
+      <div className="boton" onClick={() => sePuedeInsertarOperador() && setExpresion(`${expresion}*`)} id="multiply">x</div>
+      <div className="boton" onClick={() => setExpresion(`${expresion}0`)} id="0">0</div>
+      <div className="boton" onClick={() => calcularResultado()} id="equals">=</div>
+      <div className="boton" onClick={() => sePuedeInsertarOperador() && setExpresion(`${expresion}/`)} id="divide">÷</div>
     </div>
   )
 }

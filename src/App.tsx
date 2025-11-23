@@ -50,6 +50,9 @@ function App() {
   useEffect(() => {
     // Renderizar bloques cuando cambia la suma
     if(matterWorld){
+      // Limpiar los bloques anteriores
+      matterWorld.bodies= matterWorld.bodies.filter(body => body.isStatic);
+      
       let sumaTemp= suma;
 
       bloquesSize.forEach(size => {

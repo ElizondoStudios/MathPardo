@@ -11,11 +11,15 @@ export const sumaSlice = createSlice({
     },
     reiniciar: (state) => {
       state.value = 0
+    },
+    setSuma: (state, action) => {
+      // Redondear a un decimal
+      state.value = Math.floor(action.payload*10)/10;
     }
   },
 })
 
 // Action creators are generated for each case reducer function
-export const { sumar, reiniciar } = sumaSlice.actions
+export const { sumar, reiniciar, setSuma } = sumaSlice.actions
 
 export default sumaSlice.reducer

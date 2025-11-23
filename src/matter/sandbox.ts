@@ -53,6 +53,9 @@ export default function sandbox(
     Bodies.rectangle(width / 2, height - wallWidth / 2, width, wallWidth, {
       isStatic: true,
       render: { fillStyle: "#CAE6E9" },
+      friction: 0.1,
+      frictionAir: 0.01,
+      restitution: 0.3
     }),
   ]);
 
@@ -61,10 +64,16 @@ export default function sandbox(
     Bodies.rectangle(wallWidth / 2, height / 2, wallWidth, height, {
       isStatic: true,
       render: { fillStyle: "#CAE6E9" },
+      friction: 0.1,
+      frictionAir: 0.01,
+      restitution: 0.3
     }),
     Bodies.rectangle(width - wallWidth / 2, height / 2, wallWidth, height, {
       isStatic: true,
       render: { fillStyle: "#CAE6E9" },
+      friction: 0.1,
+      frictionAir: 0.01,
+      restitution: 0.3
     }),
   ]);
 

@@ -8,6 +8,7 @@
   border-radius: var(--border-radius);
   column-gap: 1em;
   row-gap: 1em;
+  user-select: none;
 }
 
 .pantalla{
