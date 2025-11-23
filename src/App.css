@@ -12,10 +12,6 @@ body {
   width: 80vw;
   height: 100vh;
   position: relative;
-  canvas{
-    position: relative;
-    z-index: 1000;
-  }
 }
 
 .sidebar{
@@ -36,20 +32,4 @@ body {
   font-size: 58px;
   font-weight: bold;
   transform: translateX(-50%);
-}
-
-.pardito{
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background-color: var(--primary-color);
-  width: 200px;
-  height: 200px;
-  padding: 5px 10px;
-  border-bottom-right-radius: 250px;
-  font-weight: bold;
-  img{
-    width: 100%;
-    height: auto;
-  }
 }
