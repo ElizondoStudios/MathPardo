@@ -14,7 +14,7 @@ export const sumaSlice = createSlice({
     },
     setSuma: (state, action) => {
       // Redondear a un decimal
-      state.value = Math.floor(action.payload*10)/10;
+      state.value = Math.round(action.payload*10)/10;
     }
   },
 })

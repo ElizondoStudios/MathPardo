@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { sumar } from "./store/slices/sumaSlice";
 
-const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1];
+const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 
 function App() {
   // Redux
