@@ -1,0 +1,30 @@
+[
+  {
+    "idLogro": 1,
+    "nombre": "Primeros Pasos",
+    "descripcion": "Completa tu primera operación aritmética.",
+    "dificultad": "Fácil",
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 1,
+      "total": null,
+      "tiempo_juego": null,
+      "total_bloques": null
+    }
+  },
+  {
+    "idLogro": 2,
+    "nombre": "¡Cuántos bloques!",
+    "descripcion": "Consigue al menos 10 bloques en pantalla.",
+    "dificultad": "Fácil",
+    "rutaImagen": null,
+    "condiciones": ["total_bloques"],
+    "condicion": {
+      "operaciones_realizadas": null,
+      "total": null,
+      "tiempo_juego": null,
+      "total_bloques": 10
+    }
+  }
+]
