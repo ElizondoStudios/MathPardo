@@ -9,7 +9,7 @@ import Sidebar from "./components/Sidebar";
 import Pardito from "./components/Pardito";
 
 import type { sizes } from "./models/bloque";
-import type Matter from "matter-js";
+import Matter from "matter-js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { sumar } from "./store/slices/sumaSlice";
@@ -44,14 +44,17 @@ function App() {
       setCanvasWidth(width)
       setCanvasHeight(height)
     }
+    // Para pruebas
     dispatch(sumar(1343));
   }, []);
 
   useEffect(() => {
+    console.log("Suma changed:", suma);
     // Renderizar bloques cuando cambia la suma
     if(matterWorld){
+      console.log(matterWorld)
       // Limpiar los bloques anteriores
-      matterWorld.bodies= matterWorld.bodies.filter(body => body.isStatic);
+      Matter.Composite.clear(matterWorld, true);
       
       let sumaTemp= suma;
 
@@ -69,7 +72,7 @@ function App() {
         );
       })
     }
-  }, [suma, matterWorld])
+  }, [suma])
 
   // util
   const formatSuma= (num: number)=> {
