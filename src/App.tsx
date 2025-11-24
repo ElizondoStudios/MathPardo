@@ -12,13 +12,13 @@ import type { sizes } from "./models/bloque";
 import Matter from "matter-js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { sumar } from "./store/slices/sumaSlice";
+import { sumar } from "./store/slices/totalSlice";
 
 const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 
 function App() {
   // Redux
-  const suma= useSelector((state: any) => state.suma.value);
+  const total= useSelector((state: any) => state.total.value);
   const dispatch = useDispatch();
 
   // State
@@ -49,14 +49,14 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("Suma changed:", suma);
+    console.log("Suma changed:", total);
     // Renderizar bloques cuando cambia la suma
     if(matterWorld){
       console.log(matterWorld)
       // Limpiar los bloques anteriores
       Matter.Composite.clear(matterWorld, true);
       
-      let sumaTemp= suma;
+      let sumaTemp= total;
 
       bloquesSize.forEach(size => {
         const cantidad= Math.floor(sumaTemp/size);
@@ -72,7 +72,7 @@ function App() {
         );
       })
     }
-  }, [suma])
+  }, [total])
 
   // util
   const formatSuma= (num: number)=> {
@@ -82,7 +82,7 @@ function App() {
   return (
     <div className="container-fluid d-flex align-items-center justify-content-center p-0">
       <div id="sandbox">
-        <div className="suma"> ={formatSuma(suma)}</div>
+        <div className="suma"> ={formatSuma(total)}</div>
       </div>
       <Sidebar></Sidebar>
       <Pardito></Pardito>

@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import sumaReducer from './slices/sumaSlice'
+import totalReducer from './slices/totalSlice';
 
 export default configureStore({
   reducer: {
-    suma: sumaReducer,
+    total: totalReducer,
   },
 })

@@ -2,14 +2,14 @@ import React from 'react'
 import './Calculadora.css'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { setSuma } from '../store/slices/sumaSlice';
+import { setTotal } from '../store/slices/totalSlice';
 
 const operadores= '+-*/=';
 const numeros= '0123456789';
 
 export default function Calculadora() {
   // Redux
-  const suma= useSelector((state: any) => state.suma.value);
+  const total= useSelector((state: any) => state.total.value);
   const dispatch = useDispatch();
   
   // State
@@ -17,8 +17,8 @@ export default function Calculadora() {
 
   // Effects
   React.useEffect(() => {
-    setExpresion(`${suma}`);
-  }, [suma]);
+    setExpresion(`${total}`);
+  }, [total]);
   
   // Util
   const sePuedeInsertarOperador= () => {
@@ -32,7 +32,7 @@ export default function Calculadora() {
       if(expresion.length === 0) return;
 
       const resultado = eval(expresion);
-      dispatch(setSuma(resultado));
+      dispatch(setTotal(resultado));
     } catch (error) {
       console.error("Error al calcular el resultado:", error);
       setExpresion("Error");
@@ -44,7 +44,7 @@ export default function Calculadora() {
       <div className="pantalla">
         {expresion}
       </div>
-      <div className="boton" onClick={() => setExpresion(`${suma}`)} id="clear">C</div>
+      <div className="boton" onClick={() => setExpresion(`${total}`)} id="clear">C</div>
       <div className="boton" onClick={() => setExpresion(expresion.slice(0, -1))} id="backspace">←</div>
       <div className="boton" onClick={() => setExpresion(`${expresion}1`)} id="1">1</div>
       <div className="boton" onClick={() => setExpresion(`${expresion}2`)} id="2">2</div>
