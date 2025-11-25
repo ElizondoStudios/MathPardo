@@ -7,6 +7,7 @@ import sandbox from "./matter/sandbox";
 import Bloque from "./matter/bloque";
 import Sidebar from "./components/Sidebar";
 import Pardito from "./components/Pardito";
+import Logros from "./components/Logros";
 
 import type { sizes } from "./models/bloque";
 import Matter from "matter-js";
@@ -80,13 +81,16 @@ function App() {
   }
 
   return (
-    <div className="container-fluid d-flex align-items-center justify-content-center p-0">
-      <div id="sandbox">
-        <div className="suma"> ={formatSuma(total)}</div>
+    <>
+      <Logros></Logros>
+      <div className="container-fluid d-flex align-items-center justify-content-center p-0">
+        <div id="sandbox">
+          <div className="suma"> ={formatSuma(total)}</div>
+        </div>
+        <Sidebar></Sidebar>
+        <Pardito></Pardito>
       </div>
-      <Sidebar></Sidebar>
-      <Pardito></Pardito>
-    </div>
+    </>
   );
 }
 

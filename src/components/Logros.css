@@ -1,0 +1,15 @@
+.logros{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100dvw;
+  height: 100dvh;
+  z-index: 1000;
+  background-color: var(--primary);
+  padding: 1em;
+}
+
+img.pardito-celebrando{
+  height: 200px;
+  width: auto;
+}
