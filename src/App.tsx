@@ -14,6 +14,7 @@ import Matter from "matter-js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { sumar } from "./store/slices/totalSlice";
+import logroService from "./services/logro-service";
 
 const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 
@@ -78,6 +79,11 @@ function App() {
         );
       });
     }
+  }, [total])
+
+  // Para los logros
+  useEffect(() => {
+    logroService.validarLogrosCompletados();
   }, [total])
 
   // util
