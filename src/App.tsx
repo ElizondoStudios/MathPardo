@@ -52,26 +52,31 @@ function App() {
   useEffect(() => {
     console.log("Suma changed:", total);
     // Renderizar bloques cuando cambia la suma
-    if(matterWorld){
-      console.log(matterWorld)
-      // Limpiar los bloques anteriores
-      Matter.Composite.clear(matterWorld, true);
-      
-      let sumaTemp= total;
+    if (matterWorld) {
+      console.log(matterWorld);
+      // Limpiar sólo los cuerpos dinámicos (no remover constraints como el mouse)
+      const allBodies = Matter.Composite.allBodies(matterWorld);
+      allBodies.forEach((b) => {
+        if (!b.isStatic) {
+          Matter.Composite.remove(matterWorld, b);
+        }
+      });
 
-      bloquesSize.forEach(size => {
-        const cantidad= Math.floor(sumaTemp/size);
-        sumaTemp= sumaTemp - cantidad*size;
+      let sumaTemp = total;
 
-        Array.from({length: cantidad}, () =>
+      bloquesSize.forEach((size) => {
+        const cantidad = Math.floor(sumaTemp / size);
+        sumaTemp = sumaTemp - cantidad * size;
+
+        Array.from({ length: cantidad }, () =>
           new Bloque({
-            x: canvasWidth/2 + (Math.random()-0.5)*50,
-            y: canvasHeight/2 + (Math.random()-0.5)*50,
+            x: canvasWidth / 2 + (Math.random() - 0.5) * 50,
+            y: canvasHeight / 2 + (Math.random() - 0.5) * 50,
             world: matterWorld,
-            size: size
+            size: size,
           })
         );
-      })
+      });
     }
   }, [total])
 
