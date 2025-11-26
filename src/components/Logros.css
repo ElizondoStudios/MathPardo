@@ -13,3 +13,10 @@ img.pardito-celebrando{
   height: 200px;
   width: auto;
 }
+
+.separador-dificultad{
+  display: flex;
+  align-items: start;
+  justify-content: end;
+  border-bottom: solid 5px var(--foreground);
+}

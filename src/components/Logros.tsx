@@ -1,15 +1,64 @@
-import React from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import { noVerLogros } from '../store/slices/verLogrosSlice'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
 import './Logros.css'
 import userService from '../services/user-service';
+import type { logro } from '../models/logro';
 
 export default function Logros() {
   // Redux
   const dispatch= useDispatch();
   const mostrar= useSelector((state: any) => (state.verLogros.value))
   const nombreUsuario= userService.getUserName();
+
+  // State
+  const [logros, setLogros]= useState<logro[]>([])
+
+  // Effects
+  useEffect(() => {
+    fetch("/src/scripting/logros.json")
+    .then((data) => (data.json()))
+    .then((data) => {
+      console.log(data)
+      setLogros(data);
+    })
+  }, [])
+
+  // Util
+  const renderLogro= (logro: logro) => (
+    <div className="col-6">
+      <div className="w-50 d-flex align-items-start justify-content-start flex-column">
+        <span className='fs-4'>{logro.nombre}</span>
+        <span className='fs-3'>{logro.descripcion}</span>
+      </div>
+    </div>
+  )
+
+  // Memoization
+  const logrosFaciles= useMemo(() => {
+    if(logros.length > 0){
+      return logros.filter(logro => (logro.dificultad===1)).map((logro) => (
+        renderLogro(logro)
+      ))
+    }
+  }, [logros])
+  
+  const logrosDificiles= useMemo(() => {
+    if(logros.length > 0){
+      return logros.filter(logro => (logro.dificultad===2)).map((logro) => (
+        renderLogro(logro)
+      ))
+    }
+  }, [logros])
+  
+  const logrosSecretos= useMemo(() => {
+    if(logros.length > 0){
+      return logros.filter(logro => (logro.dificultad===3)).map((logro) => (
+        renderLogro(logro)
+      ))
+    }
+  }, [logros])
 
   return (
     mostrar && (
@@ -27,6 +76,24 @@ export default function Logros() {
                 <span className="h3 text-light">Regresar &gt;</span>
               </div>
             </div>
+          </div>
+          <div className="row mt-5">
+            <div className="col-12 mb-2 separador-dificultad">
+              <span className="h3">Fácil:</span>
+            </div>
+            {logrosFaciles}
+          </div>
+          <div className="row mt-5">
+            <div className="col-12 mb-2 separador-dificultad">
+              <span className="h3">Difícil:</span>
+            </div>
+            {logrosDificiles}
+          </div>
+          <div className="row mt-5">
+            <div className="col-12 mb-2 separador-dificultad">
+              <span className="h3">Secreto:</span>
+            </div>
+            {logrosSecretos}
           </div>
         </div>
       </div>

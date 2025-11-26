@@ -3,28 +3,49 @@
     "idLogro": 1,
     "nombre": "Primeros Pasos",
     "descripcion": "Completa tu primera operación aritmética.",
-    "dificultad": "Fácil",
+    "dificultad": 1,
     "rutaImagen": null,
     "condiciones": ["operaciones_realizadas"],
     "condicion": {
       "operaciones_realizadas": 1,
       "total": null,
       "tiempo_juego": null,
-      "total_bloques": null
+      "total_bloques": null,
+      "ultima_operacion": null,
+      "resultado_ultima_operacion": null
     }
   },
   {
     "idLogro": 2,
     "nombre": "¡Cuántos bloques!",
     "descripcion": "Consigue al menos 10 bloques en pantalla.",
-    "dificultad": "Fácil",
+    "dificultad": 1,
     "rutaImagen": null,
     "condiciones": ["total_bloques"],
     "condicion": {
-      "operaciones_realizadas": null,
-      "total": null,
-      "tiempo_juego": null,
       "total_bloques": 10
+    }
+  },
+  {
+    "idLogro": 3,
+    "nombre": "1/2",
+    "descripcion": "Consigue un bloque de fracción.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "X.Y"
+    }
+  },
+  {
+    "idLogro": 4,
+    "nombre": "Cuadrado",
+    "descripcion": "Multiplica un número por sí mismo.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "X*X"
     }
   }
 ]
