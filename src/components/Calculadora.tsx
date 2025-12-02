@@ -3,6 +3,9 @@ import './Calculadora.css'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setTotal } from '../store/slices/totalSlice';
+import { agregarOperacionRealizada } from '../store/slices/operacionesRealizadasSlice';
+import { setUltimaOperacionRealizada } from '../store/slices/ultimaOperacionSlice';
+import { setResultadoUltimaOperacion } from '../store/slices/resultadoUltimaOperacionSlice';
 
 const operadores= '+-*/=';
 const numeros= '0123456789';
@@ -33,6 +36,9 @@ export default function Calculadora() {
 
       const resultado = eval(expresion);
       dispatch(setTotal(resultado));
+      dispatch(agregarOperacionRealizada())
+      dispatch(setUltimaOperacionRealizada(expresion))
+      dispatch(setResultadoUltimaOperacion(resultado))
     } catch (error) {
       console.error("Error al calcular el resultado:", error);
       setExpresion("Error");

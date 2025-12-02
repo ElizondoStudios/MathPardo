@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { sumar } from "./store/slices/totalSlice";
 import logroService from "./services/logro-service";
+import { setTotalBloques } from "./store/slices/totalBloquesSlice";
 
 const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 
@@ -51,7 +52,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("Suma changed:", total);
     // Renderizar bloques cuando cambia la suma
     if (matterWorld) {
       console.log(matterWorld);
@@ -64,25 +64,31 @@ function App() {
       });
 
       let sumaTemp = total;
+      let cantidadBloques= 0;
 
       bloquesSize.forEach((size) => {
         const cantidad = Math.floor(sumaTemp / size);
         sumaTemp = sumaTemp - cantidad * size;
 
         Array.from({ length: cantidad }, () =>
-          new Bloque({
-            x: canvasWidth / 2 + (Math.random() - 0.5) * 50,
-            y: canvasHeight / 2 + (Math.random() - 0.5) * 50,
-            world: matterWorld,
-            size: size,
-          })
+          {
+            cantidadBloques++;
+            return (
+                new Bloque({
+                x: canvasWidth / 2 + (Math.random() - 0.5) * 50,
+                y: canvasHeight / 2 + (Math.random() - 0.5) * 50,
+                world: matterWorld,
+                size: size,
+              })
+            )
+          }
         );
       });
-    }
-  }, [total])
 
-  // Para los logros
-  useEffect(() => {
+      dispatch(setTotalBloques(cantidadBloques))      
+    }
+
+    // Validar logros completados
     logroService.validarLogrosCompletados();
   }, [total])
 
