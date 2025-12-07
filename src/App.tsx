@@ -13,7 +13,6 @@ import type { sizes } from "./models/bloque";
 import Matter from "matter-js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { sumar } from "./store/slices/totalSlice";
 import logroService from "./services/logro-service";
 import { setTotalBloques } from "./store/slices/totalBloquesSlice";
 
@@ -22,6 +21,7 @@ const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 function App() {
   // Redux
   const total= useSelector((state: any) => state.total.value);
+  const operacionesRealizadas= useSelector((state: any) => state.operacionesRealizadas.value);
   const dispatch = useDispatch();
 
   // State
@@ -47,8 +47,9 @@ function App() {
       setCanvasWidth(width)
       setCanvasHeight(height)
     }
-    // Para pruebas
-    dispatch(sumar(1343));
+
+    // Pruebas
+    logroService.clearLogrosCompletados()
   }, []);
 
   useEffect(() => {
@@ -90,7 +91,7 @@ function App() {
 
     // Validar logros completados
     logroService.validarLogrosCompletados();
-  }, [total])
+  }, [operacionesRealizadas, total])
 
   // util
   const formatSuma= (num: number)=> {

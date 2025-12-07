@@ -1,4 +1,5 @@
 import Calculadora from './Calculadora'
+import LogrosSidebar from './LogrosSidebar';
 import { useDispatch } from 'react-redux'
 import { verLogros } from '../store/slices/verLogrosSlice'
 
@@ -6,16 +7,17 @@ export default function Sidebar() {
   const dispatch= useDispatch();
   
   return (
-    <div className='sidebar'>
+    <div className='sidebar user-select-none'>
       <div className='w-100'>
-        <span className="h4">Calculadora</span>
+        <span className="h3">Calculadora</span>
         <Calculadora />
       </div>
       <div className='w-100 mt-2'>
-        <span className="h4">Bloques</span>
+        <span className="h3">Bloques</span>
       </div>
       <div className='w-100 mt-2 cursor-pointer' onClick={() => {dispatch(verLogros())}}>
-        <span className="h4">🏆 Logros</span>
+        <span className="h3">🏆 Logros</span>
+        <LogrosSidebar/>
       </div>
     </div>
   )

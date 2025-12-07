@@ -13,6 +13,7 @@
   --foreground: #464646;
   --foreground-light: #464646e0;
   --border-radius: 12px;
+  transition: all ease 0.3s;
 }
 
 a {

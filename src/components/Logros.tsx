@@ -61,42 +61,40 @@ export default function Logros() {
   }, [logros])
 
   return (
-    mostrar && (
-      <div className='logros'>
-        <div className="container-fluid">
-          <div className="row">
-            <div className="col-3">
-              <img className='pardito-celebrando' src="/src/assets/math_pardo_pardito_celebrando.png" alt="Pardito celebrando" />
-            </div>
-            <div className="col-6 content-center">
-              <h2>🏆 Logros de {nombreUsuario}</h2>
-            </div>
-            <div className="col-3 d-flex align-items-start justify-content-end">
-              <div onClick={() => {dispatch(noVerLogros())}} className='cursor-pointer'>
-                <span className="h3 text-light">Regresar &gt;</span>
-              </div>
-            </div>
+    <div className={"logros user-select-none " + (mostrar? "d-flex": "d-none")} >
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-3">
+            <img className='pardito-celebrando' src="/src/assets/math_pardo_pardito_celebrando.png" alt="Pardito celebrando" />
           </div>
-          <div className="row mt-5">
-            <div className="col-12 mb-2 separador-dificultad">
-              <span className="h3">Fácil:</span>
-            </div>
-            {logrosFaciles}
+          <div className="col-6 content-center">
+            <h2>🏆 Logros de {nombreUsuario}</h2>
           </div>
-          <div className="row mt-5">
-            <div className="col-12 mb-2 separador-dificultad">
-              <span className="h3">Difícil:</span>
+          <div className="col-3 d-flex align-items-start justify-content-end">
+            <div onClick={() => {dispatch(noVerLogros())}} className='cursor-pointer'>
+              <span className="h3 text-light">Regresar &gt;</span>
             </div>
-            {logrosDificiles}
-          </div>
-          <div className="row mt-5">
-            <div className="col-12 mb-2 separador-dificultad">
-              <span className="h3">Secreto:</span>
-            </div>
-            {logrosSecretos}
           </div>
         </div>
+        <div className="row mt-5">
+          <div className="col-12 mb-2 separador-dificultad">
+            <span className="h3">Fácil:</span>
+          </div>
+          {logrosFaciles}
+        </div>
+        <div className="row mt-5">
+          <div className="col-12 mb-2 separador-dificultad">
+            <span className="h3">Difícil:</span>
+          </div>
+          {logrosDificiles}
+        </div>
+        <div className="row mt-5">
+          <div className="col-12 mb-2 separador-dificultad">
+            <span className="h3">Secreto:</span>
+          </div>
+          {logrosSecretos}
+        </div>
       </div>
-    )
+    </div>
   )
 }

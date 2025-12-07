@@ -35,7 +35,7 @@ export default function Calculadora() {
       if(expresion.length === 0) return;
 
       const resultado = eval(expresion);
-      dispatch(setTotal(resultado));
+      dispatch(setTotal(resultado.toFixed(2)));
       dispatch(agregarOperacionRealizada())
       dispatch(setUltimaOperacionRealizada(expresion))
       dispatch(setResultadoUltimaOperacion(resultado))

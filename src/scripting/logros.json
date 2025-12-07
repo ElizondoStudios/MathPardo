@@ -7,12 +7,7 @@
     "rutaImagen": null,
     "condiciones": ["operaciones_realizadas"],
     "condicion": {
-      "operaciones_realizadas": 1,
-      "total": null,
-      "tiempo_juego": null,
-      "total_bloques": null,
-      "ultima_operacion": null,
-      "resultado_ultima_operacion": null
+      "operaciones_realizadas": 1
     }
   },
   {
@@ -34,7 +29,7 @@
     "rutaImagen": null,
     "condiciones": ["resultado_ultima_operacion"],
     "condicion": {
-      "ultima_operacion": "X.Y"
+      "resultado_ultima_operacion": "^(\\d+)\\.(\\d+)$"
     }
   },
   {
@@ -45,7 +40,7 @@
     "rutaImagen": null,
     "condiciones": ["ultima_operacion"],
     "condicion": {
-      "ultima_operacion": "X*X"
+      "ultima_operacion": "^(\\d+)\\*\\1$"
     }
   }
 ]

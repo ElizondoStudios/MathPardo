@@ -20,7 +20,7 @@ body {
   background-color: var(--primary);
   display: flex;
   align-items: start;
-  justify-content: start;
+  justify-content: space-between;
   flex-direction: column;
   padding: 20px;
 }
