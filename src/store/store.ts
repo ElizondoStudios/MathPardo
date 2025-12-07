@@ -5,6 +5,7 @@ import operacionesRealizadasReducer from './slices/operacionesRealizadasSlice';
 import ultimaOperacionReducer from './slices/ultimaOperacionSlice';
 import totalBloquesReducer from './slices/totalBloquesSlice';
 import resultadoUltimaOperacionReducer from './slices/resultadoUltimaOperacionSlice';
+import logrosReducer from './slices/logrosSlice';
 
 export default configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export default configureStore({
     operacionesRealizadas: operacionesRealizadasReducer,
     ultimaOperacion: ultimaOperacionReducer,
     totalBloques: totalBloquesReducer,
-    resultadoUltimaOperacion: resultadoUltimaOperacionReducer
+    resultadoUltimaOperacion: resultadoUltimaOperacionReducer,
+    logros: logrosReducer
   },
 })

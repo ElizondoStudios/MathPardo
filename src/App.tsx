@@ -48,6 +48,9 @@ function App() {
       setCanvasHeight(height)
     }
 
+    // Inicializar el slice de logros
+    logroService.init()
+
     // Pruebas
     logroService.clearLogrosCompletados()
   }, []);

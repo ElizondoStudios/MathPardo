@@ -1,28 +1,27 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import logroService from '../services/logro-service'
+import { useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import type { logro } from '../models/logro';
 
 export default function LogrosSidebar() {
-  const operacionesRealizadas= useSelector((state: any) => state.operacionesRealizadas.value);
-  const [logrosPorCompletar, setLogrosPorCompletar]= useState<logro[]>([])
+  const logros= useSelector((state: any) => state.logros.value);
+
+  const logrosList= useMemo(() => {
+    return(
+      logros.logrosPorCompletar.slice(0, 3).map((logro, index) => (
+        <li className='fs-4' key={`logro-${index}`}>
+          {logro.nombre}
+        </li>
+      ))
+    )
+  }, [logros])
 
   useEffect(() => {
-    logroService.getLogrosPorCompletar().then((logros) => {
-      setLogrosPorCompletar(logros)
-    })
-  }, [operacionesRealizadas])
-  
+    console.log("logros", logros)
+  }, [logros])
+
   return (
     <div className='logros-sidebar'>
       <ul>
-        { 
-          logrosPorCompletar.slice(0, 3).map((logro, index) => (
-            <li className='fs-4' key={`logro-${index}`}>
-              {logro.nombre}
-            </li>
-          ))
-        }
+        { logrosList }
       </ul>
     </div>
   )

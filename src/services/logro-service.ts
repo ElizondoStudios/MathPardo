@@ -1,30 +1,39 @@
 import type { logro } from "../models/logro"
+import { setLogrosCompletados, setLogrosPorCompletar } from "../store/slices/logrosSlice"
 import store from "../store/store"
 
+const getLogrosPorCompletar= async () => {
+  const logros: logro[]= await fetch("/src/scripting/logros.json").then(data => data.json())
+  const prevLogrosCompletados: logro[]= JSON.parse(localStorage.getItem("logrosCompletados")) || []
+  const logrosPorCompletar= logros.filter(logro => !prevLogrosCompletados.some(l => l.idLogro ===logro.idLogro))
+  return logrosPorCompletar;
+}
+
+const getLogrosCompletados= () => {
+  return JSON.parse(localStorage.getItem("logrosCompletados")) || []
+}
+
 const logroService= {
-  getLogrosCompletados(): logro[]{
-    return JSON.parse(localStorage.getItem("logrosCompletados")) || []
+  // Init
+  async init(){
+    const logrosCompletados= getLogrosCompletados()
+    const logrosPorCompletar= await getLogrosPorCompletar()
+    store.dispatch(setLogrosCompletados(logrosCompletados))
+    store.dispatch(setLogrosPorCompletar(logrosPorCompletar))
   },
+  // Completados
   setLogrosCompletados(logros: logro[]){
+    store.dispatch(setLogrosCompletados(logros))
     localStorage.setItem("logrosCompletados", JSON.stringify(logros))
   },
-  agregarLogroCompletado(logro: logro){
-    const tempLogros= this.getLogrosCompletados();
-    localStorage.setItem("logrosCompletados", JSON.stringify([...tempLogros, logro]))
-  },
-  async getLogrosPorCompletar(){
-    const logros: logro[]= await fetch("/src/scripting/logros.json").then(data => data.json())
-    const prevLogrosCompletados: logro[]= this.getLogrosCompletados();
-    const logrosPorCompletar= logros.filter(logro => !prevLogrosCompletados.some(l => l.idLogro ===logro.idLogro))
-    return logrosPorCompletar;
+  clearLogrosCompletados(){
+    store.dispatch(setLogrosCompletados([]))
+    localStorage.setItem("logrosCompletados", "[]")
   },
   showLogrosCompletados(logros: logro[]){
     // logros.forEach(logro => {
-
+    
     // })
-  },
-  clearLogrosCompletados(){
-    localStorage.setItem("logrosCompletados", "[]")
   },
   async validarLogrosCompletados(){
     const total= store.getState().total.value
@@ -33,17 +42,17 @@ const logroService= {
     const resultadoUltimaOperacion= store.getState().resultadoUltimaOperacion.value
     const operacionesRealizadas= store.getState().operacionesRealizadas.value
 
-    const prevLogrosCompletados: logro[]= this.getLogrosCompletados();
+    const prevLogrosCompletados: logro[]= getLogrosCompletados();
     const newLogrosCompletados: logro[]=[];
-    const logrosPorCompletar= await this.getLogrosPorCompletar()
+    const logrosPorCompletar= await getLogrosPorCompletar()
     
     // Imprimir el estado
-    console.log("logrosPorCompletar", logrosPorCompletar)
-    console.log("total", total)
-    console.log("totalBloques", totalBloques)
-    console.log("ultimaOperacion", ultimaOperacion)
-    console.log("resultadoUltimaOperacion", resultadoUltimaOperacion)
-    console.log("operacionesRealizadas", operacionesRealizadas)
+    // console.log("logrosPorCompletar", logrosPorCompletar)
+    // console.log("total", total)
+    // console.log("totalBloques", totalBloques)
+    // console.log("ultimaOperacion", ultimaOperacion)
+    // console.log("resultadoUltimaOperacion", resultadoUltimaOperacion)
+    // console.log("operacionesRealizadas", operacionesRealizadas)
 
     // Validar que logros ya se completaron
     logrosPorCompletar.forEach((logro) => {
@@ -82,8 +91,6 @@ const logroService= {
       })
     })
 
-    console.log("Nuevos logros completados", newLogrosCompletados)
-    console.log("Prev logros completados", prevLogrosCompletados)
     this.setLogrosCompletados([...prevLogrosCompletados, ...newLogrosCompletados])
   },
 }

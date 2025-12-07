@@ -27,7 +27,7 @@ export default function Logros() {
 
   // Util
   const renderLogro= (logro: logro) => (
-    <div className="col-6">
+    <div className="col-6" key={`logro-${logro.idLogro}`}>
       <div className="w-50 d-flex align-items-start justify-content-start flex-column">
         <span className='fs-4'>{logro.nombre}</span>
         <span className='fs-3'>{logro.descripcion}</span>
