@@ -14,10 +14,6 @@ export default function LogrosSidebar() {
     )
   }, [logros])
 
-  useEffect(() => {
-    console.log("logros", logros)
-  }, [logros])
-
   return (
     <div className='logros-sidebar'>
       <ul>

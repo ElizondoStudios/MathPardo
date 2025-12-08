@@ -9,6 +9,9 @@ export const totalBloquesSlice = createSlice({
     setTotalBloques: (state, payload) => {
       state.value = payload.payload
     },
+    sumarTotalBloques: (state, payload) => {
+      state.value += payload.payload
+    },
     reiniciarTotalBloques: (state) => {
       state.value = 0
     },
@@ -16,6 +19,6 @@ export const totalBloquesSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { setTotalBloques, reiniciarTotalBloques } = totalBloquesSlice.actions
+export const { setTotalBloques, reiniciarTotalBloques, sumarTotalBloques } = totalBloquesSlice.actions
 
 export default totalBloquesSlice.reducer

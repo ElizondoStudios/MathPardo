@@ -13,7 +13,6 @@ export default function LogrosOverlay() {
 
   useEffect(() => {
     const newLogros= logrosSlice.newLogrosCompletados
-    console.log("new Logros", newLogros)
     if(newLogros?.length ===1){
       setLogroActual(newLogros[0])
       setTimeout(() => {

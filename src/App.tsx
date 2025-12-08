@@ -61,7 +61,6 @@ function App() {
   useEffect(() => {
     // Renderizar bloques cuando cambia la suma
     if (matterWorld) {
-      console.log(matterWorld);
       // Limpiar sólo los cuerpos dinámicos (no remover constraints como el mouse)
       const allBodies = Matter.Composite.allBodies(matterWorld);
       allBodies.forEach((b) => {
