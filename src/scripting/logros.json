@@ -45,13 +45,35 @@
   },
   {
     "idLogro": 5,
-    "nombre": "Identidad",
+    "nombre": "Identidad Multiplicativa",
     "descripcion": "Multiplica un número por 1",
     "dificultad": 2,
     "rutaImagen": null,
     "condiciones": ["ultima_operacion"],
     "condicion": {
       "ultima_operacion": "^(\\d+)\\*1$"
+    }
+  },
+  {
+    "idLogro": 6,
+    "nombre": "Identidad Aditiva",
+    "descripcion": "Súmale 0 a un número",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(\\d+)\\+0$"
+    }
+  },
+  {
+    "idLogro": 7,
+    "nombre": "¿Tantos? 😮",
+    "descripcion": "Usa 3 o más operadores en una sola operación",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^[\\d+\\-*/]+([+\\-*/])[\\d+\\-*/]*([+\\-*/])[\\d+\\-*/]*([+\\-*/])"
     }
   }
 ]
