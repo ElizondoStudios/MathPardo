@@ -42,5 +42,16 @@
     "condicion": {
       "ultima_operacion": "^(\\d+)\\*\\1$"
     }
+  },
+  {
+    "idLogro": 5,
+    "nombre": "Identidad",
+    "descripcion": "Multiplica un número por 1",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^((\\d+)\\*1)|(1*(\\d))$"
+    }
   }
 ]

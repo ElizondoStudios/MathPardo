@@ -38,7 +38,7 @@ export default function LogrosOverlay() {
 
   return (
     logroActual && (
-      <div className='logros-overlay content-center'>
+      <div className='logros-overlay content-center user-select-none'>
         <span className="h1">¡Logro Completado!</span>
         <img 
           src={logroActual.dificultad===1? "/src/assets/mathpardo_logro_facil2.png": logroActual.dificultad===2? "/src/assets/mathpardo_logro_dificil.png": "/src/assets/mathpardo_logro_secreto.png"} 
