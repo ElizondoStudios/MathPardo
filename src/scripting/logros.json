@@ -75,5 +75,126 @@
     "condicion": {
       "ultima_operacion": "^[\\d+\\-*/]+([+\\-*/])[\\d+\\-*/]*([+\\-*/])[\\d+\\-*/]*([+\\-*/])"
     }
+  },
+  {
+    "idLogro": 8,
+    "nombre": "Doble Dígito",
+    "descripcion": "Obtén un resultado de 10 o más.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^[1-9]\\d+$"
+    }
+  },
+  {
+    "idLogro": 9,
+    "nombre": "Cinco Operaciones",
+    "descripcion": "Completa 5 operaciones aritméticas.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 5
+    }
+  },
+  {
+    "idLogro": 10,
+    "nombre": "Resta Simple",
+    "descripcion": "Realiza tu primera resta.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": ".*-.*"
+    }
+  },
+  {
+    "idLogro": 11,
+    "nombre": "División Básica",
+    "descripcion": "Realiza tu primera división.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": ".*/.*"
+    }
+  },
+  {
+    "idLogro": 12,
+    "nombre": "Cero Absoluto",
+    "descripcion": "Obtén 0 como resultado.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^0$"
+    }
+  },
+  {
+    "idLogro": 13,
+    "nombre": "Centenario",
+    "descripcion": "Obtén exactamente 100 como resultado.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^100$"
+    }
+  },
+  {
+    "idLogro": 14,
+    "nombre": "Cubo Perfecto",
+    "descripcion": "Multiplica un número por sí mismo tres veces (n*n*n).",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(\\d+)\\*\\1\\*\\1$"
+    }
+  },
+  {
+    "idLogro": 15,
+    "nombre": "50 Operaciones",
+    "descripcion": "Completa 50 operaciones aritméticas.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 50
+    }
+  },
+  {
+    "idLogro": 16,
+    "nombre": "Coleccionista",
+    "descripcion": "Consigue 50 bloques en pantalla.",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["total_bloques"],
+    "condicion": {
+      "total_bloques": 50
+    }
+  },
+  {
+    "idLogro": 17,
+    "nombre": "Operador Maestro",
+    "descripcion": "Usa los 4 operadores básicos (+, -, *, /) en una sola operación.",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(?=.*\\+)(?=.*-)(?=.*\\*)(?=.*/).+$"
+    }
+  },
+  {
+    "idLogro": 18,
+    "nombre": "Negativo",
+    "descripcion": "Obtén un número negativo como resultado.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^-\\d+(\\.\\d+)?$"
+    }
   }
 ]

@@ -29,7 +29,12 @@ export default function Logros() {
     <div className="col-6 content-center" key={`logro-${logro.idLogro}`}>
       <div className="w-50 d-flex align-items-start justify-content-start flex-column">
         <span className='fs-4'>{logro.nombre}</span>
-        <span className='fs-3'>{logro.descripcion}</span>
+        {
+          logro.dificultad===3 && !logro.completado?
+            (<span className='fs-3'>Bloqueado</span>)
+          :
+            (<span className='fs-3'>{logro.descripcion}</span>)
+        }
       </div>
       <div className="w-50 content-center p-4">
         {
