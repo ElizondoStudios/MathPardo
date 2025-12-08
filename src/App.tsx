@@ -16,6 +16,7 @@ import { useDispatch } from "react-redux";
 import logroService from "./services/logro-service";
 import { setTotalBloques } from "./store/slices/totalBloquesSlice";
 import LogrosOverlay from "./components/LogrosOverlay";
+import { setTotal } from "./store/slices/totalSlice";
 
 const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 
@@ -51,6 +52,7 @@ function App() {
 
     // Inicializar el slice de logros
     logroService.init()
+    dispatch(setTotal(5))
 
     // Pruebas
     // logroService.clearLogrosCompletados()
