@@ -13,6 +13,7 @@ const numeros= '0123456789';
 export default function Calculadora() {
   // Redux
   const total= useSelector((state: any) => state.total.value);
+  const ultimaOperacion= useSelector((state: any) => state.ultimaOperacion.value);
   const dispatch = useDispatch();
   
   // State
@@ -21,7 +22,7 @@ export default function Calculadora() {
   // Effects
   React.useEffect(() => {
     setExpresion(`${total}`);
-  }, [total]);
+  }, [total, ultimaOperacion]);
   
   // Util
   const sePuedeInsertarOperador= () => {
