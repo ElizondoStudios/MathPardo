@@ -22,3 +22,12 @@ img.pardito-celebrando{
   justify-content: end;
   border-bottom: solid 5px var(--foreground);
 }
+
+.logro-vacio{
+  height: 200px;
+  width: auto;
+  aspect-ratio: 1/1;
+  background-color: rgba(128, 128, 128, 0.073);
+  border-radius: 50%;
+  box-shadow: 0px 0px 5px 5px rgba(128, 128, 128, 0.073);
+}

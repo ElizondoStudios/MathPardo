@@ -15,6 +15,7 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import logroService from "./services/logro-service";
 import { setTotalBloques } from "./store/slices/totalBloquesSlice";
+import LogrosOverlay from "./components/LogrosOverlay";
 
 const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 
@@ -52,7 +53,7 @@ function App() {
     logroService.init()
 
     // Pruebas
-    logroService.clearLogrosCompletados()
+    // logroService.clearLogrosCompletados()
   }, []);
 
   useEffect(() => {
@@ -103,6 +104,7 @@ function App() {
 
   return (
     <>
+      <LogrosOverlay/>
       <Logros></Logros>
       <div className="container-fluid d-flex align-items-center justify-content-center p-0">
         <div id="sandbox">

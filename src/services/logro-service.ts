@@ -1,5 +1,5 @@
 import type { logro } from "../models/logro"
-import { setLogrosCompletados, setLogrosPorCompletar } from "../store/slices/logrosSlice"
+import { clearNewLogrosCompletados, setLogrosCompletados, setLogrosPorCompletar, setNewLogrosCompletados } from "../store/slices/logrosSlice"
 import store from "../store/store"
 
 const getLogrosPorCompletar= async () => {
@@ -30,17 +30,13 @@ const logroService= {
     store.dispatch(setLogrosCompletados([]))
     localStorage.setItem("logrosCompletados", "[]")
   },
-  showLogrosCompletados(logros: logro[]){
-    // logros.forEach(logro => {
-    
-    // })
-  },
   async validarLogrosCompletados(){
     const total= store.getState().total.value
     const totalBloques= store.getState().totalBloques.value
     const ultimaOperacion= store.getState().ultimaOperacion.value
     const resultadoUltimaOperacion= store.getState().resultadoUltimaOperacion.value
     const operacionesRealizadas= store.getState().operacionesRealizadas.value
+    store.dispatch(clearNewLogrosCompletados())
 
     const prevLogrosCompletados: logro[]= getLogrosCompletados();
     const newLogrosCompletados: logro[]=[];
@@ -92,6 +88,7 @@ const logroService= {
     })
 
     this.setLogrosCompletados([...prevLogrosCompletados, ...newLogrosCompletados])
+    store.dispatch(setNewLogrosCompletados(newLogrosCompletados))
   },
 }
 

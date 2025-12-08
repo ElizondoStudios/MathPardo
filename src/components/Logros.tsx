@@ -10,33 +10,40 @@ export default function Logros() {
   // Redux
   const dispatch= useDispatch();
   const mostrar= useSelector((state: any) => (state.verLogros.value))
+  const logrosReducer= useSelector((state: any) => (state.logros.value))
   const nombreUsuario= userService.getUserName();
 
   // State
-  const [logros, setLogros]= useState<logro[]>([])
+  const [logros, setLogros]= useState<(logro & {completado: boolean})[]>([])
 
   // Effects
   useEffect(() => {
-    fetch("/src/scripting/logros.json")
-    .then((data) => (data.json()))
-    .then((data) => {
-      console.log(data)
-      setLogros(data);
-    })
-  }, [])
+    setLogros([
+      ...logrosReducer.logrosCompletados.map((logro: logro) => ({...logro, completado: true})),
+      ...logrosReducer.logrosPorCompletar.map((logro: logro) => ({...logro, completado: false})),
+    ])
+  }, [logrosReducer])
 
   // Util
-  const renderLogro= (logro: logro) => (
+  const renderLogro= (logro: logro & {completado: boolean}) => (
     <div className="col-6 content-center" key={`logro-${logro.idLogro}`}>
       <div className="w-50 d-flex align-items-start justify-content-start flex-column">
         <span className='fs-4'>{logro.nombre}</span>
         <span className='fs-3'>{logro.descripcion}</span>
       </div>
-      <div className="w-50">
-        <img 
-          src={logro.dificultad===1? "/src/assets/mathpardo_logro_facil2.png": logro.dificultad===2? "/src/assets/mathpardo_logro_dificil.png": "/src/assets/mathpardo_logro_secreto.png"} 
-          alt="logro"
-        />
+      <div className="w-50 content-center p-4">
+        {
+          logro.completado?
+          (
+            <img 
+              src={logro.dificultad===1? "/src/assets/mathpardo_logro_facil2.png": logro.dificultad===2? "/src/assets/mathpardo_logro_dificil.png": "/src/assets/mathpardo_logro_secreto.png"} 
+              alt="logro"
+            />
+          ):
+          (
+            <div className="logro-vacio"></div>
+          )
+        }
       </div>
     </div>
   )
