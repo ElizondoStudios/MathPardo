@@ -51,7 +51,7 @@
     "rutaImagen": null,
     "condiciones": ["ultima_operacion"],
     "condicion": {
-      "ultima_operacion": "^((\\d+)\\*1)|(1*(\\d))$"
+      "ultima_operacion": "^(\\d+)\\*1$"
     }
   }
 ]
