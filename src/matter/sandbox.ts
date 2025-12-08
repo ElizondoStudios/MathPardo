@@ -58,7 +58,7 @@ export default function sandbox(
       frictionAir: 0.01,
       restitution: 0.3
     }),
-    Bodies.rectangle(width / 2, - wallWidth, width, wallWidth, {
+    Bodies.rectangle(width / 2, - (wallWidth/2), width, wallWidth, {
       isStatic: true,
       render: { fillStyle: "#CAE6E9" },
       friction: 0.1,
