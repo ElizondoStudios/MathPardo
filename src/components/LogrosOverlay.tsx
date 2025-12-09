@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './LogrosOverlay.css'
 import { useDispatch, useSelector } from 'react-redux'
 import type { logro } from '../models/logro';

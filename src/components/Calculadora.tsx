@@ -8,7 +8,6 @@ import { setUltimaOperacionRealizada } from '../store/slices/ultimaOperacionSlic
 import { setResultadoUltimaOperacion } from '../store/slices/resultadoUltimaOperacionSlice';
 
 const operadores= '+-*/=';
-const numeros= '0123456789';
 
 export default function Calculadora() {
   // Redux

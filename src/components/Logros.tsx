@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { noVerLogros } from '../store/slices/verLogrosSlice'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux';
