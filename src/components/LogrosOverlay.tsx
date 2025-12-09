@@ -12,8 +12,23 @@ export default function LogrosOverlay() {
   const logrosSlice= useSelector((state: any) => state.logros.value);
   const [logroActual, setLogroActual]= useState<logro | null>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
+
+  useEffect(() => {
+    if (!audioRef.current) {
+      const audio = new Audio('/src/assets/music/achievement.mp3')
+      audio.preload = 'auto'
+      audioRef.current = audio
+    }
+  }, [])
 
   const lanzarConfetti = () => {
+    // Play achievement sound
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0
+      audioRef.current.play().catch(err => console.error('Error playing sound:', err))
+    }
+
     setTimeout(() => {
       if (canvasRef.current) {
         const myConfetti = confetti.create(canvasRef.current, {

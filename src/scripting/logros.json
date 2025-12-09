@@ -196,5 +196,38 @@
     "condicion": {
       "resultado_ultima_operacion": "^-\\d+(\\.\\d+)?$"
     }
+  },
+  {
+    "idLogro": 19,
+    "nombre": "Operaciones en Serie",
+    "descripcion": "Completa 100 operaciones aritméticas.",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 100
+    }
+  },
+  {
+    "idLogro": 20,
+    "nombre": "pi",
+    "descripcion": "Consigue como resultado el número π",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^3\\.1$"
+    }
+  },
+  {
+    "idLogro": 21,
+    "nombre": "e",
+    "descripcion": "Consigue como resultado el número e",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^2\\.7$"
+    }
   }
 ]
