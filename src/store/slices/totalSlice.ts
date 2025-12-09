@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-export const sumaSlice = createSlice({
-  name: 'suma',
+export const totalSlice = createSlice({
+  name: 'total',
   initialState: {
     value: 0,
   },
@@ -12,7 +12,7 @@ export const sumaSlice = createSlice({
     reiniciar: (state) => {
       state.value = 0
     },
-    setSuma: (state, action) => {
+    setTotal: (state, action) => {
       // Redondear a un decimal
       state.value = Math.round(action.payload*10)/10;
     }
@@ -20,6 +20,6 @@ export const sumaSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { sumar, reiniciar, setSuma } = sumaSlice.actions
+export const { sumar, reiniciar, setTotal } = totalSlice.actions
 
-export default sumaSlice.reducer
+export default totalSlice.reducer

@@ -49,9 +49,16 @@ export default function sandbox(
   var runner = Runner.create();
   Runner.run(runner, engine);
 
-  // Suelo
+  // Suelo y techo
   Composite.add(world, [
     Bodies.rectangle(width / 2, height + wallWidth / 2 - 10, width, wallWidth, {
+      isStatic: true,
+      render: { fillStyle: "#CAE6E9" },
+      friction: 0.1,
+      frictionAir: 0.01,
+      restitution: 0.3
+    }),
+    Bodies.rectangle(width / 2, - (wallWidth/2), width, wallWidth, {
       isStatic: true,
       render: { fillStyle: "#CAE6E9" },
       friction: 0.1,

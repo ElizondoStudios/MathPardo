@@ -7,18 +7,23 @@ import sandbox from "./matter/sandbox";
 import Bloque from "./matter/bloque";
 import Sidebar from "./components/Sidebar";
 import Pardito from "./components/Pardito";
+import Logros from "./components/Logros";
 
 import type { sizes } from "./models/bloque";
-import type Matter from "matter-js";
+import Matter from "matter-js";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { sumar } from "./store/slices/sumaSlice";
+import logroService from "./services/logro-service";
+import { setTotalBloques } from "./store/slices/totalBloquesSlice";
+import LogrosOverlay from "./components/LogrosOverlay";
+import { setTotal } from "./store/slices/totalSlice";
 
 const bloquesSize: sizes[] = [1000, 500, 100, 50, 10, 5, 1, 0.5, 0.1];
 
 function App() {
   // Redux
-  const suma= useSelector((state: any) => state.suma.value);
+  const total= useSelector((state: any) => state.total.value);
+  const operacionesRealizadas= useSelector((state: any) => state.operacionesRealizadas.value);
   const dispatch = useDispatch();
 
   // State
@@ -44,32 +49,54 @@ function App() {
       setCanvasWidth(width)
       setCanvasHeight(height)
     }
-    dispatch(sumar(1343));
+
+    // Inicializar el slice de logros
+    logroService.init()
+    dispatch(setTotal(5))
+
+    // Pruebas
+    // logroService.clearLogrosCompletados()
   }, []);
 
   useEffect(() => {
     // Renderizar bloques cuando cambia la suma
-    if(matterWorld){
-      // Limpiar los bloques anteriores
-      matterWorld.bodies= matterWorld.bodies.filter(body => body.isStatic);
-      
-      let sumaTemp= suma;
+    if (matterWorld) {
+      // Limpiar sólo los cuerpos dinámicos (no remover constraints como el mouse)
+      const allBodies = Matter.Composite.allBodies(matterWorld);
+      allBodies.forEach((b) => {
+        if (!b.isStatic) {
+          Matter.Composite.remove(matterWorld, b);
+        }
+      });
 
-      bloquesSize.forEach(size => {
-        const cantidad= Math.floor(sumaTemp/size);
-        sumaTemp= sumaTemp - cantidad*size;
+      let sumaTemp = total;
+      let cantidadBloques= 0;
 
-        Array.from({length: cantidad}, () =>
-          new Bloque({
-            x: canvasWidth/2 + (Math.random()-0.5)*50,
-            y: canvasHeight/2 + (Math.random()-0.5)*50,
-            world: matterWorld,
-            size: size
-          })
+      bloquesSize.forEach((size) => {
+        const cantidad = Math.floor(sumaTemp / size);
+        sumaTemp = sumaTemp - cantidad * size;
+
+        Array.from({ length: cantidad }, () =>
+          {
+            cantidadBloques++;
+            return (
+                new Bloque({
+                x: canvasWidth / 2 + (Math.random() - 0.5) * 50,
+                y: canvasHeight / 2 + (Math.random() - 0.5) * 50,
+                world: matterWorld,
+                size: size,
+              })
+            )
+          }
         );
-      })
+      });
+
+      dispatch(setTotalBloques(cantidadBloques))      
     }
-  }, [suma, matterWorld])
+
+    // Validar logros completados
+    logroService.validarLogrosCompletados();
+  }, [operacionesRealizadas, total])
 
   // util
   const formatSuma= (num: number)=> {
@@ -77,13 +104,17 @@ function App() {
   }
 
   return (
-    <div className="container-fluid d-flex align-items-center justify-content-center p-0">
-      <div id="sandbox">
-        <div className="suma"> ={formatSuma(suma)}</div>
+    <>
+      <LogrosOverlay/>
+      <Logros></Logros>
+      <div className="container-fluid d-flex align-items-center justify-content-center p-0">
+        <div id="sandbox">
+          <div className="suma"> ={formatSuma(total)}</div>
+        </div>
+        <Sidebar></Sidebar>
+        <Pardito></Pardito>
       </div>
-      <Sidebar></Sidebar>
-      <Pardito></Pardito>
-    </div>
+    </>
   );
 }
 

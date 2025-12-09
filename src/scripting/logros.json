@@ -1,0 +1,266 @@
+[
+  {
+    "idLogro": 1,
+    "nombre": "Primeros Pasos",
+    "descripcion": "Completa tu primera operación aritmética.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 1
+    }
+  },
+  {
+    "idLogro": 2,
+    "nombre": "¡Cuántos bloques!",
+    "descripcion": "Consigue al menos 10 bloques en pantalla.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["total_bloques"],
+    "condicion": {
+      "total_bloques": 10
+    }
+  },
+  {
+    "idLogro": 3,
+    "nombre": "1/2",
+    "descripcion": "Consigue un bloque de fracción.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^(\\d+)\\.(\\d+)$"
+    }
+  },
+  {
+    "idLogro": 4,
+    "nombre": "Cuadrado",
+    "descripcion": "Multiplica un número por sí mismo.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(\\d+)\\*\\1$"
+    }
+  },
+  {
+    "idLogro": 5,
+    "nombre": "Identidad Multiplicativa",
+    "descripcion": "Multiplica un número por 1",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(\\d+)\\*1$"
+    }
+  },
+  {
+    "idLogro": 6,
+    "nombre": "Identidad Aditiva",
+    "descripcion": "Súmale 0 a un número",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(\\d+)\\+0$"
+    }
+  },
+  {
+    "idLogro": 7,
+    "nombre": "¿Tantos? 😮",
+    "descripcion": "Usa 3 o más operadores en una sola operación",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^[\\d+\\-*/]+([+\\-*/])[\\d+\\-*/]*([+\\-*/])[\\d+\\-*/]*([+\\-*/])"
+    }
+  },
+  {
+    "idLogro": 8,
+    "nombre": "Doble Dígito",
+    "descripcion": "Obtén un resultado de 10 o más.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^[1-9]\\d+$"
+    }
+  },
+  {
+    "idLogro": 9,
+    "nombre": "Cinco Operaciones",
+    "descripcion": "Completa 5 operaciones aritméticas.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 5
+    }
+  },
+  {
+    "idLogro": 10,
+    "nombre": "Resta Simple",
+    "descripcion": "Realiza tu primera resta.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": ".*-.*"
+    }
+  },
+  {
+    "idLogro": 11,
+    "nombre": "División Básica",
+    "descripcion": "Realiza tu primera división.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": ".*/.*"
+    }
+  },
+  {
+    "idLogro": 12,
+    "nombre": "Cero Absoluto",
+    "descripcion": "Obtén 0 como resultado.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^0$"
+    }
+  },
+  {
+    "idLogro": 13,
+    "nombre": "Centenario",
+    "descripcion": "Obtén exactamente 100 como resultado.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^100$"
+    }
+  },
+  {
+    "idLogro": 14,
+    "nombre": "Cubo Perfecto",
+    "descripcion": "Multiplica un número por sí mismo tres veces (n*n*n).",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(\\d+)\\*\\1\\*\\1$"
+    }
+  },
+  {
+    "idLogro": 15,
+    "nombre": "50 Operaciones",
+    "descripcion": "Completa 50 operaciones aritméticas.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 50
+    }
+  },
+  {
+    "idLogro": 16,
+    "nombre": "Coleccionista",
+    "descripcion": "Consigue 50 bloques en pantalla.",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["total_bloques"],
+    "condicion": {
+      "total_bloques": 50
+    }
+  },
+  {
+    "idLogro": 17,
+    "nombre": "Operador Maestro",
+    "descripcion": "Usa los 4 operadores básicos (+, -, *, /) en una sola operación.",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^(?=.*\\+)(?=.*-)(?=.*\\*)(?=.*/).+$"
+    }
+  },
+  {
+    "idLogro": 18,
+    "nombre": "Negativo",
+    "descripcion": "Obtén un número negativo como resultado.",
+    "dificultad": 2,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^-\\d+(\\.\\d+)?$"
+    }
+  },
+  {
+    "idLogro": 19,
+    "nombre": "Operaciones en Serie",
+    "descripcion": "Completa 100 operaciones aritméticas.",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["operaciones_realizadas"],
+    "condicion": {
+      "operaciones_realizadas": 100
+    }
+  },
+  {
+    "idLogro": 20,
+    "nombre": "pi",
+    "descripcion": "Consigue como resultado el número π",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^3\\.1$"
+    }
+  },
+  {
+    "idLogro": 21,
+    "nombre": "e",
+    "descripcion": "Consigue como resultado el número e",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^2\\.7$"
+    }
+  },
+  {
+    "idLogro": 22,
+    "nombre": "Imparcial",
+    "descripcion": "Obtén un resultado impar en una operación.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "[13579]$"
+    }
+  },
+  {
+    "idLogro": 23,
+    "nombre": "Millares",
+    "descripcion": "Obtén un resultado de tres dígitos o más.",
+    "dificultad": 1,
+    "rutaImagen": null,
+    "condiciones": ["resultado_ultima_operacion"],
+    "condicion": {
+      "resultado_ultima_operacion": "^\\d{3,}$"
+    }
+  },
+  {
+    "idLogro": 24,
+    "nombre": "Reunión de Primos",
+    "descripcion": "Multiplica 1*3*7*11",
+    "dificultad": 3,
+    "rutaImagen": null,
+    "condiciones": ["ultima_operacion"],
+    "condicion": {
+      "ultima_operacion": "^1\\*3\\*7\\*11$"
+    }
+  }
+]
